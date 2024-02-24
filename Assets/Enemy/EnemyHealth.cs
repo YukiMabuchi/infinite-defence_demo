@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Enemy))] // このスクリプトをつけた時にEnemyの一緒についてくるようになる
 public class EnemyHealth : MonoBehaviour
@@ -8,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     [Tooltip("Adds amount to maxHitPoints when enemy dies.")]
     [SerializeField] int difficultyRamp = 2;
 
+    [SerializeField] Slider healthBar;
+
     int currentHitPoints = 0;
 
     Enemy enemy;
@@ -15,11 +18,19 @@ public class EnemyHealth : MonoBehaviour
     void OnEnable()
     {
         currentHitPoints = maxHitPoints;
+        healthBar.maxValue = currentHitPoints;
+        healthBar.value = currentHitPoints;
+        healthBar.gameObject.SetActive(false);
     }
 
     private void Start()
     {
         enemy = GetComponent<Enemy>(); // requireする 
+    }
+
+    private void Update()
+    {
+        healthBar.transform.rotation = Camera.main.transform.rotation;
     }
 
     void OnParticleCollision(GameObject other)
@@ -31,6 +42,9 @@ public class EnemyHealth : MonoBehaviour
     void ProcessHit()
     {
         currentHitPoints--;
+        healthBar.value = currentHitPoints;
+        healthBar.gameObject.SetActive(true);
+
         if (currentHitPoints <= 0)
         {
             enemy.RewardGold();
