@@ -9,13 +9,11 @@ public class Bank : MonoBehaviour
     public int CurrentBalance { get { return currentBalance; } } // can access, but cannot set the val. Better than making currentBalance public
 
     [SerializeField] TextMeshProUGUI displayBalance;
-
-    // TODO: later
-    // BattleManager battleManager;
+    BattleManager battleManager;
 
     private void Awake()
     {
-        // battleManager = FindObjectOfType<BattleManager>(); // TODO: later
+        battleManager = FindObjectOfType<BattleManager>();
         currentBalance = startingBalance;
         UpdateDisplay();
     }
@@ -30,16 +28,15 @@ public class Bank : MonoBehaviour
         currentBalance -= Mathf.Abs(amount); // Mathf.Abs => negative will be removed. -10 = 10
         UpdateDisplay();
 
-        // TODO: later
         // game over
-        // if (currentBalance < 0)
-        // {
-        //     if (battleManager != null)
-        //     {
-        //         UpdateDisplay(0);
-        //         battleManager.GameOver();
-        //     }
-        // }
+        if (currentBalance < 0)
+        {
+            if (battleManager != null)
+            {
+                UpdateDisplay(0);
+                battleManager.GameOver();
+            }
+        }
     }
 
     void UpdateDisplay()
