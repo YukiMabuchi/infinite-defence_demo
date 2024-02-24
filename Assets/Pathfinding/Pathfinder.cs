@@ -23,6 +23,7 @@ public class Pathfinder : MonoBehaviour
     GridManager gridManager;
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
 
+    // IMPORTANT: need to setup script execution order. GridManager > Pathfinder > Tile
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();

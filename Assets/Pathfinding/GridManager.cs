@@ -13,6 +13,7 @@ public class GridManager : MonoBehaviour
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
     public Dictionary<Vector2Int, Node> Grid { get { return grid; } }
 
+    // IMPORTANT: need to setup script execution order. GridManager > Pathfinder > Tile
     private void Awake()
     {
         CreateGrid();

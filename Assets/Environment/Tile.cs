@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     Pathfinder pathfinder;
     Vector2Int coordinates = new Vector2Int();
 
+    // IMPORTANT: need to setup script execution order. GridManager > Pathfinder > Tile
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
