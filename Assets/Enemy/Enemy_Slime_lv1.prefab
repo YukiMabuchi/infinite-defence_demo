@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: -9217171762834963224}
   - component: {fileID: -8350833224575181930}
   m_Layer: 0
-  m_Name: Slime_lv1
+  m_Name: Enemy_Slime_lv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +382,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6219856073057785545}
@@ -503,7 +503,7 @@ Transform:
   m_Children:
   - {fileID: 7484243535263945060}
   m_Father: {fileID: 7498142190150400792}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -67.609}
 --- !u!1 &9111356269650961856
 GameObject:
   m_ObjectHideFlags: 0
