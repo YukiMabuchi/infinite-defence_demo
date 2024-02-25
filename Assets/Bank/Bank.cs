@@ -27,16 +27,6 @@ public class Bank : MonoBehaviour
     {
         currentBalance -= Mathf.Abs(amount); // Mathf.Abs => negative will be removed. -10 = 10
         UpdateDisplay();
-
-        // game over
-        if (currentBalance < 0)
-        {
-            if (battleManager != null)
-            {
-                UpdateDisplay(0);
-                battleManager.GameOver();
-            }
-        }
     }
 
     void UpdateDisplay()

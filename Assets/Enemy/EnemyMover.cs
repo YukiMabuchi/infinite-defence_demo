@@ -47,7 +47,7 @@ public class EnemyMover : MonoBehaviour
 
     void FinishPath()
     {
-        enemy.StealGold();
+        enemy.GiveDamage();
         gameObject.SetActive(false); // reuse in pool
     }
 
