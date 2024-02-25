@@ -33,7 +33,7 @@ public class CoordinateLabeler : MonoBehaviour
         }
 
         SetLableColor();
-        ToggleLables();
+        ToggleLables(); // NOTE: disable this if production
     }
 
     void ToggleLables()
