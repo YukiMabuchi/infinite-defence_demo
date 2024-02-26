@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &604866461200876286
+--- !u!1 &9085261587265923313
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 651142144023184150}
-  - component: {fileID: 3446577023281671804}
+  - component: {fileID: 6717963914555380176}
+  - component: {fileID: 1196984864019219110}
   m_Layer: 0
-  m_Name: Bank
+  m_Name: WaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &651142144023184150
+--- !u!4 &6717963914555380176
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604866461200876286}
+  m_GameObject: {fileID: 9085261587265923313}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,18 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3446577023281671804
+--- !u!114 &1196984864019219110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604866461200876286}
+  m_GameObject: {fileID: 9085261587265923313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0112bc5d984cb473d94c9771a8b2e32b, type: 3}
+  m_Script: {fileID: 11500000, guid: 213107addffd74986abec40edefde794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBalance: 175
-  currentBalance: 32
-  displayBalance: {fileID: 0}
+  displayWave: {fileID: 0}
+  maxEnemyCount: 15
+  difficultyRamp: 5
+  maxEnemyCountPerWave: 0
