@@ -9,11 +9,9 @@ public class Bank : MonoBehaviour
     public int CurrentBalance { get { return currentBalance; } } // can access, but cannot set the val. Better than making currentBalance public
 
     [SerializeField] TextMeshProUGUI displayBalance;
-    BattleManager battleManager;
 
     private void Awake()
     {
-        battleManager = FindObjectOfType<BattleManager>();
         currentBalance = startingBalance;
         UpdateDisplay();
     }
@@ -31,11 +29,6 @@ public class Bank : MonoBehaviour
 
     void UpdateDisplay()
     {
-        displayBalance.text = "Gold: " + currentBalance;
-    }
-    void UpdateDisplay(int balance)
-    {
-        currentBalance = balance;
         displayBalance.text = "Gold: " + currentBalance;
     }
 }
