@@ -33,7 +33,6 @@ public class ObjectPool : MonoBehaviour
     {
         if (!pool.Find((GameObject obj) => obj.activeInHierarchy)) // TODO: This may be expensive to use Find in Update
         {
-            Debug.Log("all clear in update");
             waveManager.WaveClear();
             IncreasePool(difficultyRamp);
             maxSpawnSize += difficultyRamp;
