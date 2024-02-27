@@ -23976,7 +23976,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: poolSize
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: spawnTimer
