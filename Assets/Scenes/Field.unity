@@ -18151,7 +18151,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: poolSize
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: spawnTimer
@@ -23985,7 +23985,7 @@ PrefabInstance:
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7153141402127884706, guid: 7845b6149e63f4537b9160f1f571fb02, type: 3}
+      objectReference: {fileID: 6753617674297473082, guid: f8b5126e51862420886e955be1d1bf67, type: 3}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: difficultyRamp
       value: 1
@@ -46829,7 +46829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: spawnTimer
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: waveManager
@@ -46837,7 +46837,7 @@ PrefabInstance:
       objectReference: {fileID: 1540728412}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: difficultyRamp
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2846952493852843843, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: startCoordinates.x
