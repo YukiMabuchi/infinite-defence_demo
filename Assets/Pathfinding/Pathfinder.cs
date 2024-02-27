@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: cannot set different starting points for each ObjectPool
 public class Pathfinder : MonoBehaviour
 {
     [SerializeField] Vector2Int startCoordinates;

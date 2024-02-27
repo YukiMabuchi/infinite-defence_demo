@@ -6,7 +6,6 @@ using UnityEngine;
 // 終わったらまたdeactivateして再利用する
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] WaveManager waveManager;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField][Range(0, 50)] int poolSize = 3; // imp to have range (only works in Unity Editor)
     [Tooltip("Adds amount to poolSize when a wave ends.")]
@@ -18,27 +17,29 @@ public class ObjectPool : MonoBehaviour
     int maxSpawnSize; // poolSize + dramp
     int spawnCount; // to cound the number of already spawned ones
 
-    private void Awake()
-    {
-        maxSpawnSize = poolSize;
-        PopulatePool();
-    }
-
-    void Start()
-    {
-        StartCoroutine(SpawnEnemy());
-    }
+    bool isPoolInitialized;
+    public bool IsPoolInitialized { get { return isPoolInitialized; } }
+    bool isPoolCleared;
+    public bool IsPoolCleared { get { return isPoolCleared; } }
 
     private void Update()
     {
         if (!pool.Find((GameObject obj) => obj.activeInHierarchy)) // TODO: This may be expensive to use Find in Update
         {
-            waveManager.WaveClear();
-            IncreasePool(difficultyRamp);
-            maxSpawnSize += difficultyRamp;
-            spawnCount = 0;
-            StartCoroutine(SpawnEnemy());
+            isPoolCleared = true;
         }
+    }
+
+    /// <summary>
+    /// First function to start populating and spawning
+    /// </summary>
+    public void PopulateAndSpawn()
+    {
+        maxSpawnSize = poolSize;
+        isPoolCleared = false;
+        PopulatePool();
+        isPoolInitialized = true;
+        StartCoroutine(SpawnEnemy());
     }
 
     void PopulatePool()
@@ -74,10 +75,22 @@ public class ObjectPool : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        isPoolCleared = false;
         while (spawnCount < maxSpawnSize)
         {
             EnableObjectInPool();
             yield return new WaitForSeconds(spawnTimer);
         }
+    }
+
+    /// <summary>
+    /// Once the pool gets initialised by PopulateAndSpawn, this funciton will continue repopulating and respawning
+    /// </summary>
+    public void Respawn()
+    {
+        IncreasePool(difficultyRamp);
+        maxSpawnSize += difficultyRamp;
+        spawnCount = 0;
+        StartCoroutine(SpawnEnemy());
     }
 }

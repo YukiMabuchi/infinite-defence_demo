@@ -1,35 +1,77 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI displayWave;
 
-    // [SerializeField] public int maxEnemyCount = 15; // how many enemies should be deactivated for one wave
+    [SerializeField] GameObject enemyPools;
+    List<ObjectPool> objectPools = new List<ObjectPool>();
 
-    // TODO: manage total spawn count in ObjectPool for a wave
-    // [SerializeField] int difficultyRamp = 5;
-    // public int maxEnemyCountPerWave;
-
-    int wave;
+    int wave = 1;
+    [SerializeField] int waveDifficultyRamp = 3; // to determine when to activate ObjectPool. eg) Every 3 waves.
 
 
     private void Awake()
     {
         wave = 1;
-        // maxEnemyCountPerWave = maxEnemyCount;
         UpdateDisplay();
+
+        for (int i = 0; i < enemyPools.transform.childCount; i++)
+        {
+            Transform child = enemyPools.transform.GetChild(i);
+            ObjectPool pool = child.GetComponent<ObjectPool>();
+            if (pool != null)
+            {
+                objectPools.Add(pool);
+                if (i == 0) pool.PopulateAndSpawn();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (AreAllPoolsCleared())
+        {
+            WaveClear();
+        }
     }
 
     public void WaveClear()
     {
         wave++;
-        // maxEnemyCountPerWave += difficultyRamp;
         UpdateDisplay();
+        bool ramped = false;
+        for (int i = 0; i < objectPools.Count; i++)
+        {
+            ObjectPool pool = objectPools[i];
+            if (pool.IsPoolInitialized)
+            {
+                pool.Respawn();
+            }
+            else if (!ramped && wave % waveDifficultyRamp == 0)
+            {
+                pool.PopulateAndSpawn();
+                ramped = true;
+            }
+        }
     }
 
     void UpdateDisplay()
     {
         displayWave.text = "Wave: " + wave;
+    }
+
+    bool AreAllPoolsCleared()
+    {
+        foreach (ObjectPool pool in objectPools)
+        {
+            if (!pool.IsPoolCleared)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
