@@ -4,12 +4,9 @@ using TMPro;
 // this has to be attached to the UI panel
 public class TowerUpgradePanel : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI displayTowerLevel;
     // [SerializeField] TextMeshProUGUI displayCost;
 
-    // private void Start()
-    // {
-    //     UpdateDisplay();
-    // }
 
     public void RemoveTower()
     {
@@ -27,6 +24,7 @@ public class TowerUpgradePanel : MonoBehaviour
             upgrader.UpgradeFireRate();
         }
         // UpdateDisplay();
+        UpdateTowerLevelDisplay();
     }
 
     // TODO: separate later
@@ -42,6 +40,12 @@ public class TowerUpgradePanel : MonoBehaviour
     //         upgrader.UpgradeRange();
     //     }
     // }
+
+    public void UpdateTowerLevelDisplay()
+    {
+        TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
+        displayTowerLevel.text = upgrader.HasRangeUpgrade ? "Level" + upgrader.CurrentRangeUpgrade : "Level Max";
+    }
 
     // TODO: cost display
     // public void UpdateDisplay()

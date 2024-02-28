@@ -4971,11 +4971,11 @@ MonoBehaviour:
   - amount: 40
     cost: 150
   fireRateUpgrades:
-  - amount: 1.5
-    cost: 50
   - amount: 1.75
-    cost: 100
+    cost: 50
   - amount: 2
+    cost: 100
+  - amount: 2.5
     cost: 150
 --- !u!1001 &651522561523841749
 PrefabInstance:

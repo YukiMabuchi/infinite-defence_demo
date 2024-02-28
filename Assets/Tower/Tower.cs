@@ -64,7 +64,6 @@ public class Tower : MonoBehaviour
     // if the GameObject has collider, you can use this
     private void OnMouseDown()
     {
-        TowerManager.instance.SelectTower(this);
-        UIManager.instance.OpenTowerPanel();
+        UIManager.instance.OpenTowerPanel(this);
     }
 }

@@ -8,15 +8,23 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         CloseTowerPanel();
     }
 
-    public void OpenTowerPanel()
+    public void OpenTowerPanel(Tower tower)
     {
         towerPanel.SetActive(true);
+        TowerManager.instance.SelectTower(tower);
+        TowerUpgradePanel towerUpgradePanel = towerPanel.GetComponent<TowerUpgradePanel>();
+        if (towerUpgradePanel) towerUpgradePanel.UpdateTowerLevelDisplay();
     }
     public void CloseTowerPanel()
     {
         towerPanel.SetActive(false);
+        TowerManager.instance.SelectTower(null);
     }
 }
