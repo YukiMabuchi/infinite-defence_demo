@@ -49,7 +49,22 @@ public class TargetLocator : MonoBehaviour
 
     void Attack(bool isActive)
     {
+        // 撃つか撃たないかかparticle systemをいじる
+        // particleが出る時、tower自身とぶつかって消えるから
+        // 1. Project settingsのphysicsでlayerの設定
+        // 2. particle systemのcollisionでCollide withでlayerを設定しtower除外
         var emissionModule = projectileParticles.emission;
-        emissionModule.enabled = isActive; // 撃つか撃たないかかparticle systemをいじる
+        emissionModule.enabled = isActive;
+    }
+
+    public void UpgradeFireRate(float newFireRange)
+    {
+        var emissionModule = projectileParticles.emission;
+        emissionModule.rateOverTime = newFireRange;
+    }
+
+    public void UpgradeRange(float newRange)
+    {
+        range = newRange;
     }
 }

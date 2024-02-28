@@ -4,7 +4,18 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] int cost = 75;
+    public int Cost { get { return cost; } }
+
     [SerializeField] float buildDelay = 1f;
+
+    TowerUpgrader upgrader;
+    public TowerUpgrader Upgrader { get { return upgrader; } }
+
+    private void Awake()
+    {
+        upgrader = GetComponent<TowerUpgrader>();
+    }
+
 
     private void Start()
     {
@@ -13,13 +24,10 @@ public class Tower : MonoBehaviour
 
     public bool CreateTower(Tower tower, Vector3 position)
     {
-        Bank bank = FindObjectOfType<Bank>();
-        if (!bank) return false;
-
-        if (bank.CurrentBalance >= cost)
+        if (Bank.instance.IsAffordable(cost))
         {
             Instantiate(tower, position, Quaternion.identity);
-            bank.Withdraw(cost);
+            Bank.instance.Withdraw(cost);
             return true;
         }
 
@@ -51,5 +59,12 @@ public class Tower : MonoBehaviour
             }
             yield return new WaitForSeconds(buildDelay);
         }
+    }
+
+    // if the GameObject has collider, you can use this
+    private void OnMouseDown()
+    {
+        TowerManager.instance.SelectTower(this);
+        UIManager.instance.OpenTowerPanel();
     }
 }
