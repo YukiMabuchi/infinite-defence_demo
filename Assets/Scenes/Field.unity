@@ -35194,6 +35194,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1150084118}
     m_Modifications:
+    - target: {fileID: 3696146983400621509, guid: 78e6bfde553224566ad14919d44c46de, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696146983400621509, guid: 78e6bfde553224566ad14919d44c46de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4473793997300036359, guid: 78e6bfde553224566ad14919d44c46de, type: 3}
       propertyPath: m_Name
       value: TowerPanel
@@ -35283,7 +35291,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5274514440409575302, guid: 78e6bfde553224566ad14919d44c46de, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e6bfde553224566ad14919d44c46de, type: 3}
