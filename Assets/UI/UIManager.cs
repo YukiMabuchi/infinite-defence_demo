@@ -20,7 +20,10 @@ public class UIManager : MonoBehaviour
         towerPanel.SetActive(true);
         TowerManager.instance.SelectTower(tower);
         TowerUpgradePanel towerUpgradePanel = towerPanel.GetComponent<TowerUpgradePanel>();
-        if (towerUpgradePanel) towerUpgradePanel.UpdateTowerLevelDisplay();
+        if (towerUpgradePanel)
+        {
+            towerUpgradePanel.UpdateDisplay();
+        }
     }
     public void CloseTowerPanel()
     {

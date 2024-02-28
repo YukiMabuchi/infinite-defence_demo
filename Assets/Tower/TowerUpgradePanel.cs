@@ -5,7 +5,7 @@ using TMPro;
 public class TowerUpgradePanel : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI displayTowerLevel;
-    // [SerializeField] TextMeshProUGUI displayCost;
+    [SerializeField] TextMeshProUGUI displayCost;
 
 
     public void RemoveTower()
@@ -15,6 +15,9 @@ public class TowerUpgradePanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// NOTE: If you fix this function, don't forget to check UpdateTowerLevelDisplay and UpdateCostDisplay functions as well
+    /// </summary>
     public void Upgrade()
     {
         TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
@@ -23,8 +26,7 @@ public class TowerUpgradePanel : MonoBehaviour
             upgrader.UpgradeRange();
             upgrader.UpgradeFireRate();
         }
-        // UpdateDisplay();
-        UpdateTowerLevelDisplay();
+        UpdateDisplay();
     }
 
     // TODO: separate later
@@ -41,17 +43,26 @@ public class TowerUpgradePanel : MonoBehaviour
     //     }
     // }
 
+    public void UpdateDisplay()
+    {
+        UpdateTowerLevelDisplay();
+        UpdateCostDisplay();
+    }
+
     public void UpdateTowerLevelDisplay()
     {
+        // NOTE: since now both range and firerate are upgraded at the same time, I use range value here.
+        // if they get separated, need to fix here
         TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
         displayTowerLevel.text = upgrader.HasRangeUpgrade ? "Level" + upgrader.CurrentRangeUpgrade : "Level Max";
     }
 
-    // TODO: cost display
-    // public void UpdateDisplay()
-    // {
-    //     TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
-    //     int cost = upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost;
-    //     displayCost.text = cost.ToString() + "G";
-    // }
+    public void UpdateCostDisplay()
+    {
+        // NOTE: since now both range and firerate are upgraded at the same time, I use range value here.
+        // if they get separated, need to fix here
+        TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
+        int cost = upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost;
+        displayCost.text = cost.ToString() + "G";
+    }
 }
