@@ -20,6 +20,8 @@ public class TowerUpgrader : MonoBehaviour
     bool hasFireRateUpgrade = true;
     public bool HasFireRateUpgrade { get { return hasFireRateUpgrade; } }
 
+    int totalCost;
+    public int TotalCost { get { return totalCost; } }
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class TowerUpgrader : MonoBehaviour
 
         targetLocator.UpgradeFireRate(fireRateUpgrades[CurrentFireRateUpgrade].Amount);
         Bank.instance.Withdraw(fireRateUpgrades[CurrentFireRateUpgrade].Cost);
+        totalCost += fireRateUpgrades[CurrentFireRateUpgrade].Cost;
+
         if (currentFireRateUpgrade >= fireRateUpgrades.Length - 1)
         {
             hasFireRateUpgrade = false;
@@ -48,6 +52,8 @@ public class TowerUpgrader : MonoBehaviour
 
         targetLocator.UpgradeRange(rangeUpgrades[currentRangeUpgrade].Amount);
         Bank.instance.Withdraw(rangeUpgrades[currentRangeUpgrade].Cost);
+        totalCost += rangeUpgrades[currentRangeUpgrade].Cost;
+
         if (currentRangeUpgrade >= rangeUpgrades.Length - 1)
         {
             hasRangeUpgrade = false;

@@ -17,13 +17,12 @@ public class TowerUpgradePanel : MonoBehaviour
 
     public void RemoveTower()
     {
-        GameObject tower = TowerManager.instance.SelectedTower.gameObject;
+        Tower tower = TowerManager.instance.SelectedTower;
         Vector2Int coordinates = gridManager.GetCoordinatesFromPosition(tower.transform.position);
-
-        Destroy(tower); // tower.OnDestroy is dependent on this
+        Destroy(tower.gameObject); // tower.OnDestroy is dependent on this
         if (gridManager) gridManager.UnblockNode(coordinates);
         if (pathfinder) pathfinder.NotifyReceivers();
-        Bank.instance.Deposit(TowerManager.instance.SelectedTower.Cost);
+        Bank.instance.Deposit(tower.Cost + tower.Upgrader.TotalCost);
         gameObject.SetActive(false);
     }
 
