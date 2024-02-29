@@ -39,7 +39,8 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown() // built-in
     {
-        if (gridManager.GetNode(coordinates).isWalkable && !pathfinder.willBlockPath(coordinates))
+        Node node = gridManager.GetNode(coordinates);
+        if (node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates))
         {
             bool isSuccessful = towerPrefab.CreateTower(towerPrefab, transform.position);
 
