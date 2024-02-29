@@ -33,7 +33,7 @@ public class TowerUpgradePanel : MonoBehaviour
     public void Upgrade()
     {
         TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
-        if (upgrader.HasRangeUpgrade && upgrader.HasFireRateUpgrade && Bank.instance.IsAffordable(upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost))
+        if (Bank.instance.IsAffordable(upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost))
         {
             upgrader.UpgradeRange();
             upgrader.UpgradeFireRate();

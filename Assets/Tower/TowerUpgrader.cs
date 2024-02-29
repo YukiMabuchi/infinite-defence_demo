@@ -28,23 +28,33 @@ public class TowerUpgrader : MonoBehaviour
 
     public void UpgradeFireRate()
     {
+        if (!hasFireRateUpgrade) return;
+
         targetLocator.UpgradeFireRate(fireRateUpgrades[CurrentFireRateUpgrade].Amount);
         Bank.instance.Withdraw(fireRateUpgrades[CurrentFireRateUpgrade].Cost);
-        currentFireRateUpgrade++;
-        if (currentFireRateUpgrade >= fireRateUpgrades.Length)
+        if (currentFireRateUpgrade >= fireRateUpgrades.Length - 1)
         {
             hasFireRateUpgrade = false;
+        }
+        else
+        {
+            currentFireRateUpgrade++;
         }
     }
 
     public void UpgradeRange()
     {
+        if (!hasRangeUpgrade) return;
+
         targetLocator.UpgradeRange(rangeUpgrades[currentRangeUpgrade].Amount);
         Bank.instance.Withdraw(rangeUpgrades[currentRangeUpgrade].Cost);
-        currentRangeUpgrade++;
-        if (currentRangeUpgrade >= rangeUpgrades.Length)
+        if (currentRangeUpgrade >= rangeUpgrades.Length - 1)
         {
             hasRangeUpgrade = false;
+        }
+        else
+        {
+            currentRangeUpgrade++;
         }
     }
 }
