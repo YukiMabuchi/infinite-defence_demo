@@ -32,6 +32,11 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public void SetIsPlaceable(bool state)
+    {
+        isPlaceable = state;
+    }
+
     private void OnMouseDown() // built-in
     {
         if (gridManager.GetNode(coordinates).isWalkable && !pathfinder.willBlockPath(coordinates))
@@ -40,6 +45,7 @@ public class Tile : MonoBehaviour
 
             if (isSuccessful)
             {
+                towerPrefab.SetTile(this);
                 gridManager.BlockNode(coordinates);
                 pathfinder.NotifyReceivers(); // everytime tower is placed, it sends message to recalculate the path that enemy should follow
             }

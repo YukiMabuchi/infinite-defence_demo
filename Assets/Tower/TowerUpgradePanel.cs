@@ -7,10 +7,22 @@ public class TowerUpgradePanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayTowerLevel;
     [SerializeField] TextMeshProUGUI displayCost;
 
+    GridManager gridManager;
+    Pathfinder pathfinder;
+    private void Awake()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+        pathfinder = FindObjectOfType<Pathfinder>();
+    }
 
     public void RemoveTower()
     {
-        Destroy(TowerManager.instance.SelectedTower.gameObject);
+        GameObject tower = TowerManager.instance.SelectedTower.gameObject;
+        Vector2Int coordinates = gridManager.GetCoordinatesFromPosition(tower.transform.position);
+
+        Destroy(tower); // tower.OnDestroy is dependent on this
+        if (gridManager) gridManager.UnblockNode(coordinates);
+        if (pathfinder) pathfinder.NotifyReceivers();
         Bank.instance.Deposit(TowerManager.instance.SelectedTower.Cost);
         gameObject.SetActive(false);
     }

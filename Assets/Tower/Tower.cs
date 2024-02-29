@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
     TowerUpgrader upgrader;
     public TowerUpgrader Upgrader { get { return upgrader; } }
 
+    Tile targetTile;
+
     private void Awake()
     {
         upgrader = GetComponent<TowerUpgrader>();
@@ -61,9 +63,22 @@ public class Tower : MonoBehaviour
         }
     }
 
+    public void SetTile(Tile tile)
+    {
+        targetTile = tile;
+    }
+
     // if the GameObject has collider, you can use this
     private void OnMouseDown()
     {
         UIManager.instance.OpenTowerPanel(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (targetTile)
+        {
+            targetTile.SetIsPlaceable(true);
+        }
     }
 }
