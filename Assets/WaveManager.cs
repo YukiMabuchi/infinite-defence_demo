@@ -4,17 +4,26 @@ using System.Collections.Generic;
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager instance;
+
     [SerializeField] TextMeshProUGUI displayWave;
+
+    [SerializeField] int waveDifficultyRamp = 3; // to determine when to activate ObjectPool. eg) Every 3 waves.
 
     [SerializeField] GameObject enemyPools;
     List<ObjectPool> objectPools = new List<ObjectPool>();
 
     int wave = 1;
-    [SerializeField] int waveDifficultyRamp = 3; // to determine when to activate ObjectPool. eg) Every 3 waves.
+    public int Wave { get { return wave; } }
 
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         wave = 1;
         UpdateDisplay();
 

@@ -1,14 +1,25 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int goldReward = 25;
-    [SerializeField] int goldPenalty = 25;
+    [SerializeField] int initialGoldReward = 25;
+    [SerializeField] int initialGoldPenalty = 25;
+    [SerializeField] float initialRamp = 1f;
+
     [SerializeField] float damage = 15; // TODO: separate file like EnemyHealth later
 
+    float ramp;
+    int goldReward;
+    int goldPenalty;
 
     Bank bank;
     Castle castle;
+
+    private void OnEnable()
+    {
+        ManageGold();
+    }
 
     private void Start()
     {
@@ -30,5 +41,14 @@ public class Enemy : MonoBehaviour
     public void GiveDamage()
     {
         castle.TakeDamage(damage);
+    }
+
+    public void ManageGold()
+    {
+        float wave = WaveManager.instance.Wave; // changing type to float will hold the fractional part of the res of / operator
+
+        ramp = initialRamp + (wave / 10);
+        goldReward = (int)Math.Floor(initialGoldReward * ramp);
+        goldPenalty = (int)Math.Floor(initialGoldPenalty * ramp);
     }
 }
