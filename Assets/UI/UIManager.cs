@@ -15,19 +15,22 @@ public class UIManager : MonoBehaviour
         CloseTowerPanel();
     }
 
-    public void OpenTowerPanel(Tower tower)
+    public void OpenTowerPanel()
     {
         towerPanel.SetActive(true);
-        TowerManager.instance.SelectTower(tower);
         TowerUpgradePanel towerUpgradePanel = towerPanel.GetComponent<TowerUpgradePanel>();
         if (towerUpgradePanel)
         {
             towerUpgradePanel.UpdateDisplay();
         }
     }
+
     public void CloseTowerPanel()
     {
         towerPanel.SetActive(false);
-        TowerManager.instance.SelectTower(null);
+        if (TowerManager.instance.SelectedTower)
+        {
+            TowerManager.instance.UnSelectTower();
+        }
     }
 }

@@ -8,6 +8,11 @@ public class Tower : MonoBehaviour
 
     [SerializeField] float buildDelay = 1f;
 
+    [SerializeField] LayerMask towerUIlayer;
+
+    [SerializeField] GameObject rangeIndicator;
+    public GameObject RangeIndicator { get { return rangeIndicator; } }
+
     TowerUpgrader upgrader;
     public TowerUpgrader Upgrader { get { return upgrader; } }
 
@@ -45,6 +50,7 @@ public class Tower : MonoBehaviour
         // child in transform
         foreach (Transform child in transform)
         {
+            if (IsOnLayer(child.gameObject, towerUIlayer)) continue;
             child.gameObject.SetActive(false);
             foreach (Transform grandchild in child)
             {
@@ -54,6 +60,7 @@ public class Tower : MonoBehaviour
 
         foreach (Transform child in transform)
         {
+            if (IsOnLayer(child.gameObject, towerUIlayer)) continue;
             child.gameObject.SetActive(true);
             foreach (Transform grandchild in child)
             {
@@ -68,10 +75,26 @@ public class Tower : MonoBehaviour
         targetTile = tile;
     }
 
+    bool IsOnLayer(GameObject obj, LayerMask layerMask)
+    {
+        return layerMask == (layerMask | (1 << obj.layer));
+    }
+
+    public void ManageRangeIndicator(bool state)
+    {
+        rangeIndicator.SetActive(state);
+    }
+
     // if the GameObject has collider, you can use this
     private void OnMouseDown()
     {
-        UIManager.instance.OpenTowerPanel(this);
+        // hide the previous tower's indicator first if any
+        if (TowerManager.instance.SelectedTower)
+        {
+            TowerManager.instance.UnSelectTower();
+        }
+        TowerManager.instance.SelectTower(this);
+        UIManager.instance.OpenTowerPanel();
     }
 
     private void OnDestroy()

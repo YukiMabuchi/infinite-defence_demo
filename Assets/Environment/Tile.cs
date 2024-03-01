@@ -42,6 +42,7 @@ public class Tile : MonoBehaviour
         Node node = gridManager.GetNode(coordinates);
         if (node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates))
         {
+            TowerManager.instance.UnSelectTower(); // TODO: clicking the button on TowerUpgradePanel will bubble the click event and comes here, so ... if node is safe to place the tower, it's gonna unselect first so cannot do upgrade and such
             bool isSuccessful = towerPrefab.CreateTower(towerPrefab, transform.position);
 
             if (isSuccessful)

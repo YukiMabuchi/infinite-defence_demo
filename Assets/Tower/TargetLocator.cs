@@ -1,11 +1,25 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Tower))]
 public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
     [SerializeField] ParticleSystem projectileParticles;
     [SerializeField] float range = 20f; // 10 for 1 block
+
+    Tower tower;
     Transform target;
+    GridManager gridManager;
+
+    private float rangeIndicatorSize = 65f; // 65 is the current RangeIndicator scale for 1 tile around the tower
+
+    private void Start()
+    {
+        tower = GetComponent<Tower>();
+        gridManager = FindObjectOfType<GridManager>();
+
+        UpgradeRangeIndicator(range);
+    }
 
     void Update()
     {
@@ -57,6 +71,13 @@ public class TargetLocator : MonoBehaviour
         emissionModule.enabled = isActive;
     }
 
+    public void UpgradeRangeIndicator(float range)
+    {
+        GameObject rangeIndicator = tower.RangeIndicator;
+        float newScale = range / gridManager.UnityGridSize * rangeIndicatorSize;
+        rangeIndicator.transform.localScale = new Vector3(newScale, newScale, newScale);
+    }
+
     public void UpgradeFireRate(float newFireRange)
     {
         var emissionModule = projectileParticles.emission;
@@ -66,5 +87,6 @@ public class TargetLocator : MonoBehaviour
     public void UpgradeRange(float newRange)
     {
         range = newRange;
+        UpgradeRangeIndicator(newRange);
     }
 }

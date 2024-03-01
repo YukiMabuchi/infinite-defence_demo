@@ -15,5 +15,16 @@ public class TowerManager : MonoBehaviour
     public void SelectTower(Tower tower)
     {
         selectedTower = tower;
+        if (selectedTower) selectedTower.ManageRangeIndicator(true); // Unselectでnullが来る可能性もある
+    }
+
+    public void UnSelectTower()
+    {
+        if (selectedTower)
+        {
+            selectedTower.ManageRangeIndicator(false);
+            SelectTower(null);
+        }
+        UIManager.instance.CloseTowerPanel();
     }
 }
