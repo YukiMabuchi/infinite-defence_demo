@@ -9,7 +9,10 @@ public class TowerManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     public void SelectTower(Tower tower)

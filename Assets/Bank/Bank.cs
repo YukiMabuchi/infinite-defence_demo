@@ -14,7 +14,11 @@ public class Bank : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         currentBalance = startingBalance;
         UpdateDisplay();
     }
