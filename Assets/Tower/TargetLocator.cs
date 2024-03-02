@@ -48,6 +48,8 @@ public class TargetLocator : MonoBehaviour
 
     void AimWeapon()
     {
+        if (!target) return;
+
         float targetDistance = Vector3.Distance(transform.position, target.position);
         weapon.LookAt(target);
 
@@ -88,5 +90,13 @@ public class TargetLocator : MonoBehaviour
     {
         range = newRange;
         UpgradeRangeIndicator(newRange);
+    }
+
+    public void UpgradeDamage(int amount)
+    {
+        Projectile projectile = projectileParticles.GetComponent<Projectile>();
+        if (!projectile) return;
+
+        projectile.UpgradeDamage(amount);
     }
 }

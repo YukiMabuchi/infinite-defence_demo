@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 802871480556947169}
   - component: {fileID: 4396225980054974524}
   - component: {fileID: 4355679374057158321}
+  - component: {fileID: 2692396575748843326}
   m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
@@ -4863,6 +4864,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2692396575748843326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241185938073845920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546cedd15872a4fd1baee923c1abed83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &5417496520122984064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,18 +4984,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeUpgrades:
   - amount: 30
-    cost: 50
-  - amount: 35
     cost: 100
+  - amount: 35
+    cost: 250
   - amount: 40
-    cost: 150
+    cost: 300
   fireRateUpgrades:
   - amount: 1.75
-    cost: 50
-  - amount: 2
     cost: 100
+  - amount: 2
+    cost: 250
   - amount: 2.5
-    cost: 150
+    cost: 300
+  damageUpgrades:
+  - amount: 2
+    cost: 0
+  - amount: 3
+    cost: 0
+  - amount: 4
+    cost: 0
 --- !u!1001 &651522561523841749
 PrefabInstance:
   m_ObjectHideFlags: 0

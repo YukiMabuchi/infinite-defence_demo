@@ -36,6 +36,7 @@ public class TowerUpgradePanel : MonoBehaviour
         {
             upgrader.UpgradeRange();
             upgrader.UpgradeFireRate();
+            upgrader.UpgradeDamage(); // TODO: free now
         }
         UpdateDisplay();
     }

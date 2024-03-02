@@ -33,22 +33,25 @@ public class EnemyHealth : MonoBehaviour
         healthBar.transform.rotation = Camera.main.transform.rotation;
     }
 
+    // Particle systemのcollision moduleのSend collision messageをonにしないといけない
     void OnParticleCollision(GameObject other)
     {
-        // Particle systemのcollision moduleのSend collision messageをonにしないといけない
-        ProcessHit();
+        Projectile projectile = other.GetComponent<Projectile>();
+        if (!projectile) return;
+
+        ProcessHit(projectile.Damage);
     }
 
-    void ProcessHit()
+    void ProcessHit(int damage)
     {
-        currentHitPoints--;
+        currentHitPoints -= damage;
         healthBar.value = currentHitPoints;
         healthBar.gameObject.SetActive(true);
 
         if (currentHitPoints <= 0)
         {
             enemy.RewardGold();
-            maxHitPoints += difficultyRamp;
+            maxHitPoints += difficultyRamp; // TODO: raise health according to wave
             gameObject.SetActive(false); // reuse in pool
         }
     }
