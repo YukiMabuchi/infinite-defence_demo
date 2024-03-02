@@ -4,16 +4,22 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Enemy))] // このスクリプトをつけた時にEnemyの一緒についてくるようになる
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int maxHitPoints = 3;
+    [SerializeField] int initialMaxHitPoints = 3;
 
     [Tooltip("Adds amount to maxHitPoints when enemy dies.")]
     [SerializeField] int difficultyRamp = 4;
 
     [SerializeField] Slider healthBar;
 
+    int maxHitPoints;
     int currentHitPoints = 0;
 
     Enemy enemy;
+
+    private void Awake()
+    {
+        maxHitPoints = initialMaxHitPoints;
+    }
 
     void OnEnable()
     {
@@ -51,8 +57,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHitPoints <= 0)
         {
             enemy.RewardGold();
-            maxHitPoints += difficultyRamp; // TODO: raise health according to wave
             gameObject.SetActive(false); // reuse in pool
         }
+    }
+
+    public void UpgradeHealth(int wave)
+    {
+        if (wave == 1) return;
+        maxHitPoints = difficultyRamp * wave;
     }
 }

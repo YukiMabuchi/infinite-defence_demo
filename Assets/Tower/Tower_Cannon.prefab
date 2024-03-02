@@ -4984,18 +4984,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeUpgrades:
   - amount: 30
-    cost: 100
+    cost: 50
   - amount: 35
-    cost: 250
+    cost: 200
   - amount: 40
-    cost: 300
+    cost: 500
   fireRateUpgrades:
   - amount: 1.75
-    cost: 100
+    cost: 50
   - amount: 2
-    cost: 250
+    cost: 200
   - amount: 2.5
-    cost: 300
+    cost: 500
   damageUpgrades:
   - amount: 2
     cost: 0

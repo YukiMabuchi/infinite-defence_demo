@@ -987,8 +987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1d325da09164c4ab3d938d27cfac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialGoldReward: 30
-  initialGoldPenalty: 30
+  initialGoldReward: 29
+  initialGoldPenalty: 29
+  initialRamp: 1
   damage: 25
 --- !u!114 &7668926335434458661
 MonoBehaviour:
@@ -1002,8 +1003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e122888bfd84cc29f1760c99938af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 20
-  difficultyRamp: 3
+  initialMaxHitPoints: 20
+  difficultyRamp: 8
   healthBar: {fileID: 120084212556463491}
 --- !u!114 &4598217980320390279
 MonoBehaviour:

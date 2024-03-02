@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float damage = 15; // TODO: separate file like EnemyHealth later
 
+    EnemyHealth enemyHeath;
+
     float ramp;
     int goldReward;
     int goldPenalty;
@@ -16,9 +18,14 @@ public class Enemy : MonoBehaviour
     Bank bank;
     Castle castle;
 
+    private void Awake()
+    {
+        enemyHeath = GetComponent<EnemyHealth>();
+    }
     private void OnEnable()
     {
         ManageGold();
+        UpgradeHealth();
     }
 
     private void Start()
@@ -50,5 +57,10 @@ public class Enemy : MonoBehaviour
         ramp = initialRamp + (wave / 10);
         goldReward = (int)Math.Floor(initialGoldReward * ramp);
         goldPenalty = (int)Math.Floor(initialGoldPenalty * ramp);
+    }
+
+    void UpgradeHealth()
+    {
+        enemyHeath.UpgradeHealth(WaveManager.instance.Wave);
     }
 }
