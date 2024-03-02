@@ -75,6 +75,7 @@ public class TowerUpgradePanel : MonoBehaviour
         // if they get separated, need to fix here
         TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
         int cost = upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost;
-        displayCost.text = cost.ToString() + "G";
+        string displayText = upgrader.HasRangeUpgrade && upgrader.HasFireRateUpgrade ? cost.ToString() + "G" : "Max";
+        displayCost.text = displayText;
     }
 }
