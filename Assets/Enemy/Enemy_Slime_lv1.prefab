@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e122888bfd84cc29f1760c99938af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMaxHitPoints: 3
+  initialMaxHitPoints: 2
   difficultyRamp: 2
   healthBar: {fileID: 6955363203046680965}
 --- !u!114 &-8350833224575181930
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355dc7150ff1b434885e9b7eebf6b4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
+  speed: 2.5
 --- !u!1 &7446019047767849115
 GameObject:
   m_ObjectHideFlags: 0

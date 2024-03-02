@@ -13963,7 +13963,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: poolSize
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: spawnTimer
@@ -13995,7 +13995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4341259356912500823, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_Name
-      value: ObjectPool1
+      value: Slime_lv2
       objectReference: {fileID: 0}
     - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16676,6 +16676,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
+--- !u!4 &1024716328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+  m_PrefabInstance: {fileID: 1523829236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1030719740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18723,7 +18728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4341259356912500823, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_Name
-      value: ObjectPool2
+      value: TurtleShell_lv1
       objectReference: {fileID: 0}
     - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20425,6 +20430,7 @@ Transform:
   - {fileID: 751230346}
   - {fileID: 1886812689}
   - {fileID: 1014469540}
+  - {fileID: 1024716328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1238349085 stripped
@@ -24164,6 +24170,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6542963284127596919, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
   m_PrefabInstance: {fileID: 2099077115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1523829236
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1238275174}
+    m_Modifications:
+    - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: poolSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: spawnTimer
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 7153141402127884706, guid: 7845b6149e63f4537b9160f1f571fb02, type: 3}
+    - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: difficultyRamp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846952493852843843, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: startCoordinates.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846952493852843843, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: destinationCoordinates.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846952493852843843, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: destinationCoordinates.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341259356912500823, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_Name
+      value: Slime_lv3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
 --- !u!1001 &1524957235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35722,7 +35813,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: poolSize
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2567399315274944200, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: spawnTimer
@@ -35754,7 +35845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4341259356912500823, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_Name
-      value: ObjectPool0
+      value: Slime_lv1
       objectReference: {fileID: 0}
     - target: {fileID: 4364433415846190218, guid: 9eb5d8112adc447d6a3e5d4fb3a1679a, type: 3}
       propertyPath: m_LocalPosition.x

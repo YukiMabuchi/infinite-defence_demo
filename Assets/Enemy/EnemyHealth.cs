@@ -64,6 +64,6 @@ public class EnemyHealth : MonoBehaviour
     public void UpgradeHealth(int wave)
     {
         if (wave == 1) return;
-        maxHitPoints = difficultyRamp * wave;
+        maxHitPoints = initialMaxHitPoints + (difficultyRamp * wave);
     }
 }
