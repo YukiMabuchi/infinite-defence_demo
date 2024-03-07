@@ -78,4 +78,9 @@ public class TowerUpgradePanel : MonoBehaviour
         string displayText = upgrader.HasRangeUpgrade && upgrader.HasFireRateUpgrade ? cost.ToString() + "G" : "Max";
         displayCost.text = displayText;
     }
+
+    private void OnDisable()
+    {
+        UIManager.instance.OpenTowerSelectPanel();
+    }
 }

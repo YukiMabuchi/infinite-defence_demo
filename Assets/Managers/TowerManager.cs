@@ -4,6 +4,11 @@ public class TowerManager : MonoBehaviour
 {
     public static TowerManager instance;
 
+    // the tower for placing
+    Tower placingTower;
+    public Tower PlacingTower { get { return placingTower; } }
+
+    // the tower for upgrade
     Tower selectedTower;
     public Tower SelectedTower { get { return selectedTower; } }
 
@@ -29,5 +34,15 @@ public class TowerManager : MonoBehaviour
             SelectTower(null);
         }
         UIManager.instance.CloseTowerUpgradePanel();
+    }
+
+    public void SetPlacingTower(Tower tower)
+    {
+        placingTower = tower;
+    }
+
+    public void UnsetPlacingTower()
+    {
+        placingTower = null;
     }
 }

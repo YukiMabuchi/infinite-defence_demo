@@ -6345,6 +6345,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6542963284127596919, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
   m_PrefabInstance: {fileID: 1631715727}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &395138975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7795157338357489370, guid: 887461269ed8e464d9c1347c8cc6a442, type: 3}
+  m_PrefabInstance: {fileID: 4396529567413747955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &397136871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6542963284127596919, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
@@ -25867,6 +25872,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1150084118}
     m_Modifications:
+    - target: {fileID: 303037763637379844, guid: 28f608f3c094646899668853285b2cfd, type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 395138975}
     - target: {fileID: 4473793997300036359, guid: 28f608f3c094646899668853285b2cfd, type: 3}
       propertyPath: m_Name
       value: TowerSelectPanel
