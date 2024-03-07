@@ -40,15 +40,15 @@ public class Tile : MonoBehaviour
         isPlaceable = state;
     }
 
-    bool CheckPlacable()
+    bool CheckPlaceable()
     {
         Node node = gridManager.GetNode(coordinates);
-        return node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates);
+        return isPlaceable && node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates);
     }
 
     public void PlaceTower()
     {
-        if (CheckPlacable())
+        if (CheckPlaceable())
         {
             TowerManager.instance.UnSelectTower(); // TODO: clicking the button on TowerUpgradePanel will bubble the click event and comes here, so ... if node is safe to place the tower, it's gonna unselect first so cannot do upgrade and such
             bool isSuccessful = towerPrefab.CreateTower(towerPrefab, transform.position);
@@ -87,7 +87,7 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        Color color = CheckPlacable() ? Color.blue : Color.red;
+        Color color = CheckPlaceable() ? Color.blue : Color.red;
         PaintTile(color);
     }
 
