@@ -17,6 +17,7 @@ public class Tower : MonoBehaviour
     public TowerUpgrader Upgrader { get { return upgrader; } }
 
     Tile targetTile;
+    bool skipBuildDelay = false;
 
     private void Awake()
     {
@@ -66,7 +67,7 @@ public class Tower : MonoBehaviour
             {
                 grandchild.gameObject.SetActive(true);
             }
-            yield return new WaitForSeconds(buildDelay);
+            yield return new WaitForSeconds(skipBuildDelay ? 0 : buildDelay);
         }
     }
 
@@ -85,6 +86,11 @@ public class Tower : MonoBehaviour
         rangeIndicator.SetActive(state);
     }
 
+    public void SkipBuildDelay(bool state)
+    {
+        skipBuildDelay = state;
+    }
+
     // if the GameObject has collider, you can use this
     private void OnMouseDown()
     {
@@ -94,7 +100,7 @@ public class Tower : MonoBehaviour
             TowerManager.instance.UnSelectTower();
         }
         TowerManager.instance.SelectTower(this);
-        UIManager.instance.OpenTowerPanel();
+        UIManager.instance.OpenTowerUpgradePanel();
     }
 
     private void OnDestroy()

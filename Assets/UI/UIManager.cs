@@ -3,7 +3,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    [SerializeField] GameObject towerPanel;
+    [SerializeField] GameObject _towerUpgradePanel;
+    [SerializeField] GameObject _towerSelectPanel;
 
     private void Awake()
     {
@@ -15,25 +16,37 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        CloseTowerPanel();
+        CloseTowerUpgradePanel();
     }
 
-    public void OpenTowerPanel()
+    public void OpenTowerUpgradePanel()
     {
-        towerPanel.SetActive(true);
-        TowerUpgradePanel towerUpgradePanel = towerPanel.GetComponent<TowerUpgradePanel>();
+        _towerUpgradePanel.SetActive(true);
+        TowerUpgradePanel towerUpgradePanel = _towerUpgradePanel.GetComponent<TowerUpgradePanel>();
         if (towerUpgradePanel)
         {
             towerUpgradePanel.UpdateDisplay();
         }
+        CloseTowerSelectPanel();
     }
 
-    public void CloseTowerPanel()
+    public void CloseTowerUpgradePanel()
     {
-        towerPanel.SetActive(false);
+        _towerUpgradePanel.SetActive(false);
         if (TowerManager.instance.SelectedTower)
         {
             TowerManager.instance.UnSelectTower();
         }
+        OpenTowerSelectPanel();
+    }
+
+    public void OpenTowerSelectPanel()
+    {
+        _towerSelectPanel.SetActive(true);
+    }
+
+    public void CloseTowerSelectPanel()
+    {
+        _towerSelectPanel.SetActive(false);
     }
 }

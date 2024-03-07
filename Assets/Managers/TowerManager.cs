@@ -28,6 +28,6 @@ public class TowerManager : MonoBehaviour
             selectedTower.ManageRangeIndicator(false);
             SelectTower(null);
         }
-        UIManager.instance.CloseTowerPanel();
+        UIManager.instance.CloseTowerUpgradePanel();
     }
 }

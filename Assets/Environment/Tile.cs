@@ -11,6 +11,7 @@ public class Tile : MonoBehaviour
     GridManager gridManager;
     Pathfinder pathfinder;
     Vector2Int coordinates = new Vector2Int();
+    public Vector2Int Coordinates { get { return coordinates; } }
 
     // IMPORTANT: need to setup script execution order. GridManager > Pathfinder > Tile
     private void Awake()
@@ -37,7 +38,7 @@ public class Tile : MonoBehaviour
         isPlaceable = state;
     }
 
-    private void OnMouseDown() // built-in
+    public void PlaceTower()
     {
         Node node = gridManager.GetNode(coordinates);
         if (node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates))

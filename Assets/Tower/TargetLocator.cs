@@ -63,7 +63,7 @@ public class TargetLocator : MonoBehaviour
         }
     }
 
-    void Attack(bool isActive)
+    public void Attack(bool isActive)
     {
         // 撃つか撃たないかかparticle systemをいじる
         // particleが出る時、tower自身とぶつかって消えるから
