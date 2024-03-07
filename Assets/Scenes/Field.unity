@@ -9908,6 +9908,7 @@ RectTransform:
   m_Children:
   - {fileID: 1150084118}
   - {fileID: 840791367802058126}
+  - {fileID: 493985592}
   - {fileID: 1422225157}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16889,6 +16890,10 @@ PrefabInstance:
     - target: {fileID: 536669508604284545, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 683441095257634991, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
+      propertyPath: isPlaceable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2478943605188557267, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
       propertyPath: m_text
@@ -24362,6 +24367,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 683441095257634991, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
+      propertyPath: isPlaceable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2478943605188557267, guid: e41c74639ef1f41cf8b4253617b9c692, type: 3}
       propertyPath: m_text
       value: 0,1
@@ -25876,6 +25885,10 @@ PrefabInstance:
       propertyPath: indicator
       value: 
       objectReference: {fileID: 395138975}
+    - target: {fileID: 3442720096211408568, guid: 28f608f3c094646899668853285b2cfd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4473793997300036359, guid: 28f608f3c094646899668853285b2cfd, type: 3}
       propertyPath: m_Name
       value: TowerSelectPanel
@@ -33519,7 +33532,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4901818911189113113}
+    m_TransformParent: {fileID: 620626696}
     m_Modifications:
     - target: {fileID: 335980876021449716, guid: 38f72c6f6d62a410a8eb00de09e5f865, type: 3}
       propertyPath: m_Name
@@ -33599,11 +33612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980893640371354576, guid: 38f72c6f6d62a410a8eb00de09e5f865, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 246.29932
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8980893640371354576, guid: 38f72c6f6d62a410a8eb00de09e5f865, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -424.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8980893640371354576, guid: 38f72c6f6d62a410a8eb00de09e5f865, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -35525,10 +35538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4893401892542795952, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 493985592}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
 --- !u!1001 &2699909774950772678
@@ -35953,6 +35963,10 @@ PrefabInstance:
       propertyPath: displayBalance
       value: 
       objectReference: {fileID: 1856756909}
+    - target: {fileID: 3446577023281671804, guid: 6894cb8f6c2944279ad7b9f3d5102de9, type: 3}
+      propertyPath: startingBalance
+      value: 175
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
