@@ -25885,10 +25885,6 @@ PrefabInstance:
       propertyPath: indicator
       value: 
       objectReference: {fileID: 395138975}
-    - target: {fileID: 3442720096211408568, guid: 28f608f3c094646899668853285b2cfd, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4473793997300036359, guid: 28f608f3c094646899668853285b2cfd, type: 3}
       propertyPath: m_Name
       value: TowerSelectPanel
@@ -35404,6 +35400,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1150084118}
     m_Modifications:
+    - target: {fileID: 164852521172035735, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 164852521172035735, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 164852521172035735, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 164852521172035735, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278251007
+      objectReference: {fileID: 0}
     - target: {fileID: 3456007294248649258, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -35534,7 +35546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623100421502314772, guid: 501ede76c16964ffdb57cd7eb28fdc0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
