@@ -5,7 +5,6 @@ public class TargetLocator : MonoBehaviour
 {
     [SerializeField] Transform weapon;
     [SerializeField] ParticleSystem projectileParticles;
-    [SerializeField] float range = 20f; // 10 for 1 block
 
     Tower tower;
     Transform target;
@@ -18,7 +17,7 @@ public class TargetLocator : MonoBehaviour
         tower = GetComponent<Tower>();
         gridManager = FindObjectOfType<GridManager>();
 
-        UpgradeRangeIndicator(range);
+        UpgradeRangeIndicator(tower.Range);
     }
 
     void Update()
@@ -53,7 +52,7 @@ public class TargetLocator : MonoBehaviour
         float targetDistance = Vector3.Distance(transform.position, target.position);
         weapon.LookAt(target);
 
-        if (targetDistance < range)
+        if (targetDistance < tower.Range)
         {
             Attack(true);
         }
@@ -88,7 +87,7 @@ public class TargetLocator : MonoBehaviour
 
     public void UpgradeRange(float newRange)
     {
-        range = newRange;
+        tower.SetRange(newRange);
         UpgradeRangeIndicator(newRange);
     }
 

@@ -10,6 +10,9 @@ public class Tower : MonoBehaviour
 
     [SerializeField] LayerMask towerUIlayer;
 
+    [SerializeField] float range = 20f; // 10 for 1 block
+    public float Range { get { return range; } }
+
     [SerializeField] GameObject rangeIndicator;
     public GameObject RangeIndicator { get { return rangeIndicator; } }
 
@@ -74,6 +77,11 @@ public class Tower : MonoBehaviour
     public void SetTile(Tile tile)
     {
         targetTile = tile;
+    }
+
+    public void SetRange(float _range)
+    {
+        range = _range;
     }
 
     bool IsOnLayer(GameObject obj, LayerMask layerMask)
