@@ -48,6 +48,12 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
+    // TODO: disable or alert if the tower's cost is higher that currentBalance
+    bool CheckAffordable()
+    {
+        return Bank.instance.CurrentBalance < towerToPlace.Cost;
+    }
+
     public void StartTowerPlacement()
     {
         // unset prfab's build delay
