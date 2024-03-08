@@ -8,11 +8,11 @@ public class TowerUpgradePanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayCost;
 
     GridManager gridManager;
-    Pathfinder pathfinder;
+    Pathfinder[] pathfinders;
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
-        pathfinder = FindObjectOfType<Pathfinder>();
+        pathfinders = FindObjectsOfType<Pathfinder>();
     }
 
     public void RemoveTower()
@@ -22,7 +22,10 @@ public class TowerUpgradePanel : MonoBehaviour
         Bank.instance.Deposit((tower.Cost + tower.Upgrader.TotalCost) / 2); // give back the half of the total cost
         Destroy(tower.gameObject); // tower.OnDestroy is dependent on this
         if (gridManager) gridManager.UnblockNode(coordinates);
-        if (pathfinder) pathfinder.NotifyReceivers();
+        foreach (Pathfinder pathfinder in pathfinders)
+        {
+            pathfinder.NotifyReceivers();
+        }
         gameObject.SetActive(false);
     }
 

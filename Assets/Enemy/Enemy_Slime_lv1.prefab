@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 3256027408109053370}
   - component: {fileID: -9217171762834963224}
   - component: {fileID: -8350833224575181930}
-  - component: {fileID: 586040231277779993}
   m_Layer: 3
   m_Name: Enemy_Slime_lv1
   m_TagString: Untagged
@@ -476,21 +475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.8
---- !u!114 &586040231277779993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153141402127884706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ba377b67d9042de854ea66b6d06bf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spreadOnDeath: 1
-  spreadCount: 3
-  pool: {fileID: 3541344049933518166, guid: 83cf309b4f09e406d806d411d798f2f9, type: 3}
 --- !u!1 &7446019047767849115
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,6 @@ public class Pathfinder : MonoBehaviour
     }
     public List<Node> GetNewPath(Vector2Int coordinates)
     {
-
         gridManager.ResetNodes();
         BreadFirstSearch(coordinates);
         return BuildPath();

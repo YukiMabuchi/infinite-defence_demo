@@ -9,7 +9,8 @@ public class Tile : MonoBehaviour
     public bool IsPlaceable { get { return isPlaceable; } } // getter method rather than making var public, or creating method like GetIsPlaceable
 
     GridManager gridManager;
-    Pathfinder pathfinder;
+    Pathfinder[] pathfinders;
+
     Vector2Int coordinates = new Vector2Int();
     public Vector2Int Coordinates { get { return coordinates; } }
 
@@ -19,7 +20,7 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
-        pathfinder = FindObjectOfType<Pathfinder>();
+        pathfinders = FindObjectsOfType<Pathfinder>();
     }
 
     void Start()
@@ -43,7 +44,7 @@ public class Tile : MonoBehaviour
     bool CheckPlaceable()
     {
         Node node = gridManager.GetNode(coordinates);
-        return isPlaceable && node != null && node.isWalkable && !pathfinder.willBlockPath(coordinates);
+        return isPlaceable && node != null && node.isWalkable && !pathfinders[0].willBlockPath(coordinates); // pathfinders[0] can be any one of the pathfinders, just using the method
     }
 
     public void PlaceTower()
@@ -57,7 +58,12 @@ public class Tile : MonoBehaviour
             {
                 towerPrefab.SetTile(this);
                 gridManager.BlockNode(coordinates);
-                pathfinder.NotifyReceivers(); // everytime tower is placed, it sends message to recalculate the path that enemy should follow
+
+                // everytime tower is placed, it sends message to recalculate the path that enemy should follow
+                foreach (Pathfinder _pathfinder in pathfinders)
+                {
+                    _pathfinder.NotifyReceivers();
+                }
             }
         }
 
