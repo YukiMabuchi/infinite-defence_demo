@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     int maxHitPoints;
     int currentHitPoints = 0;
+    public int CurrentHitPoints { get { return currentHitPoints; } }
 
     Enemy enemy;
 

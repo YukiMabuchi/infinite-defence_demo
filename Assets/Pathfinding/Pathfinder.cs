@@ -65,7 +65,6 @@ public class Pathfinder : MonoBehaviour
             if (grid.ContainsKey(neighborCoords))
             {
                 neighbors.Add(grid[neighborCoords]);
-
             }
         }
 
