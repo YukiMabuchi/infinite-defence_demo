@@ -35621,11 +35621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3820800157821342941, guid: 83cf309b4f09e406d806d411d798f2f9, type: 3}
       propertyPath: destinationCoordinates.x
-      value: 5
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3820800157821342941, guid: 83cf309b4f09e406d806d411d798f2f9, type: 3}
       propertyPath: destinationCoordinates.y
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
