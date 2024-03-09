@@ -15,11 +15,13 @@ public class EnemyMover : MonoBehaviour
     GridManager gridManager;
     Pathfinder pathfinder;
 
+    float initialSpeed;
 
     void OnEnable()
     {
         ReturnToStart();
         RecalculatePath(true);
+        UpgradeEnemySpeed();
     }
 
     private void Awake()
@@ -27,6 +29,8 @@ public class EnemyMover : MonoBehaviour
         enemy = GetComponent<Enemy>(); // requireする        
         gridManager = FindObjectOfType<GridManager>();
         pathfinder = FindObjectOfType<Pathfinder>();
+
+        initialSpeed = speed;
     }
 
     void RecalculatePath(bool resetPath)
@@ -72,5 +76,14 @@ public class EnemyMover : MonoBehaviour
 
         // reach the last tile
         FinishPath();
+    }
+
+    void UpgradeEnemySpeed()
+    {
+        float wave = WaveManager.instance.Wave;
+        if (wave % 5 != 0) return; // upgrade every 5 wave
+
+        float ramp = wave / 100;
+        speed = initialSpeed + ramp;
     }
 }
