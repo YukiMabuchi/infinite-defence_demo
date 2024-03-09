@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     EnemyHealth enemyHeath;
 
+    EnemySkill enemySkill;
+
     float ramp;
     int goldReward;
     int goldPenalty;
@@ -21,11 +23,18 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemyHeath = GetComponent<EnemyHealth>();
+        enemySkill = GetComponent<EnemySkill>();
     }
     private void OnEnable()
     {
         ManageGold();
         UpgradeHealth();
+
+        // TODO
+        // if (enemySkill != null)
+        // {
+        //     StartCoroutine(enemySkill.AttackFromLongDistance());
+        // }
     }
 
     private void Start()
