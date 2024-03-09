@@ -4933,6 +4933,7 @@ MonoBehaviour:
   towerUIlayer:
     serializedVersion: 2
     m_Bits: 512
+  range: 20
   rangeIndicator: {fileID: 7472345315849176269}
 --- !u!114 &-5177196990541624122
 MonoBehaviour:
@@ -4948,7 +4949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 2769907208583281145}
   projectileParticles: {fileID: 4396225980054974524}
-  range: 20
 --- !u!65 &4926188136933630497
 BoxCollider:
   m_ObjectHideFlags: 0

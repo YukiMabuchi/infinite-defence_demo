@@ -17,7 +17,7 @@ public class TargetLocator : MonoBehaviour
         tower = GetComponent<Tower>();
         gridManager = FindObjectOfType<GridManager>();
 
-        UpgradeRangeIndicator(tower.Range);
+        UpgradeRangeIndicator(tower.Range); // set the minimum size of the indicator first
     }
 
     void Update()
