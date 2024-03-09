@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,9 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] GameObject gameOverPopup;
     [SerializeField] GameObject menuPopup;
+
+    [SerializeField] List<GameObject> speedAdjusterButtons;
+    int currentGameSpeed = 1;
 
     private void Awake()
     {
@@ -25,11 +29,12 @@ public class BattleManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = currentGameSpeed;
     }
 
     public void RestartGame()
     {
+        currentGameSpeed = 1;
         ResumeGame();
         ReloadScene();
     }
@@ -50,5 +55,27 @@ public class BattleManager : MonoBehaviour
     {
         ResumeGame();
         menuPopup.SetActive(false);
+    }
+
+    // TODO: find better way
+    public void AdjustGameSpeed(int times)
+    {
+        Time.timeScale = 1 * times;
+
+        Dictionary<int, int> buttonToShow = new Dictionary<int, int> {
+            { 1, 1 },
+            { 2, 2 },
+            { 4, 0 },
+        };
+        Dictionary<int, int> buttonToHide = new Dictionary<int, int> {
+            { 1, 0 },
+            { 2, 1 },
+            { 4, 2 },
+        };
+
+        speedAdjusterButtons[buttonToHide[times]].SetActive(false);
+        speedAdjusterButtons[buttonToShow[times]].SetActive(true);
+
+        currentGameSpeed = times;
     }
 }
