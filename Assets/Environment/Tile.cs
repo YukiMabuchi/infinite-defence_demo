@@ -86,6 +86,11 @@ public class Tile : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        UIManager.instance.CloseTowerUpgradePanel();
+    }
+
     private void OnMouseEnter()
     {
         if (TowerManager.instance.PlacingTower == null)
