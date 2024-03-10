@@ -88,13 +88,6 @@ public class Tile : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null || EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
-
-        UIManager.instance.CloseTowerUpgradePanel();
-    }
-
     private void OnMouseEnter()
     {
         if (TowerManager.instance.PlacingTower == null)
