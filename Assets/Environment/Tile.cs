@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class Tile : MonoBehaviour
 {
@@ -88,6 +90,8 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         UIManager.instance.CloseTowerUpgradePanel();
     }
 
