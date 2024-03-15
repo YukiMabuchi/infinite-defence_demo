@@ -4,20 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
+    public static BattleManager instance;
+
     [SerializeField] GameObject gameOverPopup;
     [SerializeField] GameObject menuPopup;
 
     [SerializeField] List<GameObject> speedAdjusterButtons;
     int currentGameSpeed = 1;
 
+    bool isGameOver = false;
+    public bool IsGameOver { get { return isGameOver; } }
+
     private void Awake()
     {
+        if (instance == null) instance = this;
+
         gameOverPopup.SetActive(false);
         menuPopup.SetActive(false);
     }
 
     public void GameOver()
     {
+        isGameOver = true;
+        UIManager.instance.CloseTowerSelectPanel();
+        UIManager.instance.CloseTowerUpgradePanel(false);
+        UIManager.instance.HideUIs();
         gameOverPopup.SetActive(true);
         PauseGame();
     }
@@ -47,6 +58,8 @@ public class BattleManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        if (isGameOver) return;
+
         Time.timeScale = 0;
         menuPopup.SetActive(true);
     }
@@ -60,6 +73,8 @@ public class BattleManager : MonoBehaviour
     // TODO: find better way
     public void AdjustGameSpeed(int times)
     {
+        if (isGameOver) return;
+
         Time.timeScale = 1 * times;
 
         Dictionary<int, int> buttonToShow = new Dictionary<int, int> {

@@ -10,13 +10,6 @@ public class Castle : MonoBehaviour
     // public Transform[] attackPoints;
     float currentHitPoints = 0;
 
-    BattleManager battleManager;
-
-    private void Awake()
-    {
-        battleManager = FindObjectOfType<BattleManager>();
-    }
-
     private void Start()
     {
         currentHitPoints = maxHitPoints;
@@ -33,7 +26,7 @@ public class Castle : MonoBehaviour
         {
             currentHitPoints = 0;
             gameObject.SetActive(false);
-            battleManager.GameOver();
+            BattleManager.instance.GameOver();
         }
 
         healthBar.value = currentHitPoints;
