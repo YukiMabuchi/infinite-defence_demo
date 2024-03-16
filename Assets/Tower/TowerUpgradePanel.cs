@@ -29,6 +29,7 @@ public class TowerUpgradePanel : MonoBehaviour
             pathfinder.NotifyReceivers();
         }
         gameObject.SetActive(false);
+        UIManager.instance.OpenTowerSelectPanel();
     }
 
     /// <summary>
@@ -84,10 +85,5 @@ public class TowerUpgradePanel : MonoBehaviour
         int cost = upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost;
         string displayText = upgrader.HasRangeUpgrade && upgrader.HasFireRateUpgrade ? cost.ToString() + "G" : "Max";
         displayCost.text = displayText;
-    }
-
-    private void OnDisable()
-    {
-        UIManager.instance.OpenTowerSelectPanel();
     }
 }
