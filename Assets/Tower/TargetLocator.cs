@@ -50,7 +50,7 @@ public class TargetLocator : MonoBehaviour
         if (!target) return;
 
         float targetDistance = Vector3.Distance(transform.position, target.position);
-        weapon.LookAt(target);
+        if (tower.DoesAim) weapon.LookAt(target);
 
         if (targetDistance < tower.Range)
         {

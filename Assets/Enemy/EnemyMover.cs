@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(EnemyStatus))]
 public class EnemyMover : MonoBehaviour
 {
 
@@ -11,6 +12,7 @@ public class EnemyMover : MonoBehaviour
     List<Node> path = new List<Node>(); // access in inspector
 
     Enemy enemy;
+    EnemyStatus enemyStatus;
 
     GridManager gridManager;
     Pathfinder pathfinder;
@@ -26,7 +28,8 @@ public class EnemyMover : MonoBehaviour
 
     private void Awake()
     {
-        enemy = GetComponent<Enemy>(); // requireする        
+        enemy = GetComponent<Enemy>();
+        enemyStatus = GetComponent<EnemyStatus>();
         gridManager = FindObjectOfType<GridManager>();
         pathfinder = FindObjectOfType<Pathfinder>();
 
@@ -85,5 +88,18 @@ public class EnemyMover : MonoBehaviour
 
         float ramp = wave / 100;
         speed = initialSpeed + ramp;
+    }
+
+    public IEnumerator DowngradeEnemeySpeed(float percent, float seconds)
+    {
+        if (enemyStatus.IsSlowedDown) yield break;
+        float prevSpeed = speed;
+
+        speed -= speed * percent;
+        enemyStatus.UpdateEnemeyStatus("slow", true);
+        yield return new WaitForSeconds(seconds);
+
+        enemyStatus.UpdateEnemeyStatus("slow", false);
+        speed = prevSpeed;
     }
 }

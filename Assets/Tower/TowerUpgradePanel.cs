@@ -65,25 +65,25 @@ public class TowerUpgradePanel : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        UpdateTowerLevelDisplay();
-        UpdateCostDisplay();
+        TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
+        upgrader.CheckCurrentLevel();
+        UpdateTowerLevelDisplay(upgrader);
+        UpdateCostDisplay(upgrader);
     }
 
-    public void UpdateTowerLevelDisplay()
+    public void UpdateTowerLevelDisplay(TowerUpgrader upgrader)
     {
-        // NOTE: since now both range and firerate are upgraded at the same time, I use range value here.
+        // TODO: since now both range and firerate are upgraded at the same time, I use range value here.
         // if they get separated, need to fix here
-        TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
-        displayTowerLevel.text = upgrader.HasRangeUpgrade ? "Level" + upgrader.CurrentRangeUpgrade : "Level Max";
+        displayTowerLevel.text = upgrader.HasMoreUpgrade ? "Level" + upgrader.CurrentLevel : "Level Max";
     }
 
-    public void UpdateCostDisplay()
+    public void UpdateCostDisplay(TowerUpgrader upgrader)
     {
-        // NOTE: since now both range and firerate are upgraded at the same time, I use range value here.
+        // TODO: since now both range and firerate are upgraded at the same time, I use range value here.
         // if they get separated, need to fix here
-        TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
         int cost = upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost;
-        string displayText = upgrader.HasRangeUpgrade && upgrader.HasFireRateUpgrade ? cost.ToString() + "G" : "Max";
+        string displayText = upgrader.HasMoreUpgrade ? cost.ToString() + "G" : "Max";
         displayCost.text = displayText;
     }
 }

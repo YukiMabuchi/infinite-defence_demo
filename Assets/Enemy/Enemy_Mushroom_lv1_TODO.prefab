@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4159601559057805944}
   - component: {fileID: 7949717619596219263}
   - component: {fileID: 8438427369018801140}
+  - component: {fileID: 5307739316227732864}
   m_Layer: 0
   m_Name: Enemy_Mushroom_lv1_TODO
   m_TagString: Untagged
@@ -139,6 +140,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillBetween: 10
+--- !u!114 &5307739316227732864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264213370537990050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff8f1ee80cbe4ee7809023d81250a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1029362807284367314
 GameObject:
   m_ObjectHideFlags: 0

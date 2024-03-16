@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // TODO: adujst to be able to take several towers
-    [SerializeField] Tower towerPrefab; // not GameObject, to be able to access Tower method
-
     [SerializeField] bool isPlaceable;
     public bool IsPlaceable { get { return isPlaceable; } } // getter method rather than making var public, or creating method like GetIsPlaceable
 
@@ -47,7 +44,7 @@ public class Tile : MonoBehaviour
         return isPlaceable && node != null && node.isWalkable && !pathfinders[0].willBlockPath(coordinates); // pathfinders[0] can be any one of the pathfinders, just using the method
     }
 
-    public void PlaceTower()
+    public void PlaceTower(Tower towerPrefab)
     {
         if (CheckPlaceable())
         {

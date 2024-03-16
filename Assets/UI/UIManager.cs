@@ -4,6 +4,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [SerializeField] GameObject _towerUpgradePanel;
+    [SerializeField] GameObject[] towerUpgradeButtons;
     [SerializeField] GameObject _towerSelectPanel;
 
     [Tooltip("These UIs will be hidden when the game is over")]
@@ -22,9 +23,14 @@ public class UIManager : MonoBehaviour
         CloseTowerUpgradePanel();
     }
 
-    public void OpenTowerUpgradePanel()
+    public void OpenTowerUpgradePanel(bool upgradable = true)
     {
         _towerUpgradePanel.SetActive(true);
+        foreach (GameObject upgradeButton in towerUpgradeButtons)
+        {
+            upgradeButton.SetActive(upgradable);
+        }
+
         TowerUpgradePanel towerUpgradePanel = _towerUpgradePanel.GetComponent<TowerUpgradePanel>();
         if (towerUpgradePanel)
         {

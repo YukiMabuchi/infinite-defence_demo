@@ -930,6 +930,7 @@ GameObject:
   - component: {fileID: 7668926335434458661}
   - component: {fileID: 4598217980320390279}
   - component: {fileID: 1277899995089211948}
+  - component: {fileID: 4345296220273504424}
   m_Layer: 3
   m_Name: Enemy_TurtleShell_lv1
   m_TagString: Untagged
@@ -1040,6 +1041,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &4345296220273504424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753617674297473082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff8f1ee80cbe4ee7809023d81250a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6861681153245785469
 GameObject:
   m_ObjectHideFlags: 0

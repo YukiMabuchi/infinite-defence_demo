@@ -7,6 +7,7 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [SerializeField] Transform indicator;
     [SerializeField] LayerMask tileLayer;
 
+    [Tooltip("Set tower prefab")]
     [SerializeField] Tower towerToPlace;
     Tower towerDisplay; // dummy tower to tell users where to put it
 
@@ -50,7 +51,7 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Tile targetTile = Array.Find(tiles, tile => tile.Coordinates == coordinates);
         if (targetTile)
         {
-            targetTile.PlaceTower();
+            targetTile.PlaceTower(towerToPlace);
         }
     }
 

@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(TargetLocator))]
 public class TowerUpgrader : MonoBehaviour
 {
+    [SerializeField] bool allowUpgrade = true;
+    public bool AllowUpgrade { get { return allowUpgrade; } }
+
     TargetLocator targetLocator;
 
     [SerializeField] UpgradeStage[] rangeUpgrades;
@@ -28,6 +31,13 @@ public class TowerUpgrader : MonoBehaviour
     bool hasDamageUpgrade = true;
     public bool HasDamageUpgrade { get { return hasDamageUpgrade; } }
 
+    // check if the tower still has things to upgrades
+    bool hasMoreUpgrade = true;
+    public bool HasMoreUpgrade { get { return hasMoreUpgrade; } }
+
+    int currentLevel = 1; // NOTE: for uses, it stats with 1 
+    public int CurrentLevel { get { return currentLevel; } } // the level to manage all the upgrades
+
     int totalCost;
     public int TotalCost { get { return totalCost; } }
 
@@ -38,7 +48,7 @@ public class TowerUpgrader : MonoBehaviour
 
     public void UpgradeFireRate()
     {
-        if (!hasFireRateUpgrade) return;
+        if (!AllowUpgrade || !hasFireRateUpgrade) return;
 
         targetLocator.UpgradeFireRate(fireRateUpgrades[CurrentFireRateUpgrade].Amount);
         Bank.instance.Withdraw(fireRateUpgrades[CurrentFireRateUpgrade].Cost);
@@ -56,7 +66,7 @@ public class TowerUpgrader : MonoBehaviour
 
     public void UpgradeRange()
     {
-        if (!hasRangeUpgrade) return;
+        if (!AllowUpgrade || !hasRangeUpgrade) return;
 
         targetLocator.UpgradeRange(rangeUpgrades[currentRangeUpgrade].Amount);
         Bank.instance.Withdraw(rangeUpgrades[currentRangeUpgrade].Cost);
@@ -74,7 +84,7 @@ public class TowerUpgrader : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        if (!hasDamageUpgrade) return;
+        if (!AllowUpgrade || !hasDamageUpgrade) return;
 
         targetLocator.UpgradeDamage((int)damageUpgrades[currentDamageUpgrade].Amount);
         Bank.instance.Withdraw(damageUpgrades[currentDamageUpgrade].Cost);
@@ -88,6 +98,25 @@ public class TowerUpgrader : MonoBehaviour
         {
             currentDamageUpgrade++;
         }
+    }
+
+    // TODO: better level management
+    public void CheckCurrentLevel()
+    {
+        if (!allowUpgrade)
+        {
+            hasMoreUpgrade = false;
+            return;
+        }
+
+        int allLevelsSum = currentDamageUpgrade + currentFireRateUpgrade + currentRangeUpgrade;
+        if (allLevelsSum == 0) return;
+
+        // NOTE: this is assuming that the current tower max level is 3
+        if (!hasDamageUpgrade && !hasFireRateUpgrade && !hasRangeUpgrade) hasMoreUpgrade = false;
+        else if (allLevelsSum % 6 == 0) currentLevel = 3;
+        else if (allLevelsSum % 3 == 0) currentLevel = 2;
+
     }
 }
 

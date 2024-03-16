@@ -8,9 +8,13 @@ public class Tower : MonoBehaviour
 
     [SerializeField] float buildDelay = 1f;
 
+    [SerializeField] bool doesAim = true;
+    public bool DoesAim { get { return doesAim; } }
+
+
     [SerializeField] LayerMask towerUIlayer;
 
-    [SerializeField] float range = 20f; // 10 for 1 block
+    [SerializeField] float range = 20f; // TODO: 10 for 1 block, but considering the current pos of the tower, 0.5f has to be the basis
     public float Range { get { return range; } }
 
     [SerializeField] GameObject rangeIndicator;
@@ -110,7 +114,7 @@ public class Tower : MonoBehaviour
             TowerManager.instance.UnSelectTower();
         }
         TowerManager.instance.SelectTower(this);
-        UIManager.instance.OpenTowerUpgradePanel();
+        UIManager.instance.OpenTowerUpgradePanel(upgrader.AllowUpgrade);
     }
 
     private void OnDestroy()

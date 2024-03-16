@@ -47,6 +47,12 @@ public class EnemyHealth : MonoBehaviour
         if (!projectile) return;
 
         ProcessHit(projectile.Damage);
+
+        // apply tower skills
+        ProjectileSkill projectileSkill = projectile.GetComponent<ProjectileSkill>();
+        if (!projectileSkill) return;
+        if (projectileSkill.UseSlowDown) projectileSkill.SlowDown(enemy);
+
     }
 
     void ProcessHit(int damage)
