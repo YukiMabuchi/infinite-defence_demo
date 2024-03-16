@@ -102,7 +102,7 @@ public class Tower : MonoBehaviour
     // if the GameObject has collider, you can use this
     private void OnMouseDown()
     {
-        if (BattleManager.instance.IsGameOver) return;
+        if (BattleManager.instance.IsGameOver || BattleManager.instance.IsGamePaused) return;
 
         // hide the previous tower's indicator first if any
         if (TowerManager.instance.SelectedTower)

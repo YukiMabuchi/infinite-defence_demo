@@ -17,6 +17,8 @@ public class TowerUpgradePanel : MonoBehaviour
 
     public void RemoveTower()
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         Tower tower = TowerManager.instance.SelectedTower;
         Vector2Int coordinates = gridManager.GetCoordinatesFromPosition(tower.transform.position);
         Bank.instance.Deposit((tower.Cost + tower.Upgrader.TotalCost) / 2); // give back the half of the total cost
@@ -34,6 +36,8 @@ public class TowerUpgradePanel : MonoBehaviour
     /// </summary>
     public void Upgrade()
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         TowerUpgrader upgrader = TowerManager.instance.SelectedTower.Upgrader;
         if (Bank.instance.IsAffordable(upgrader.RangeUpgrades[upgrader.CurrentRangeUpgrade].Cost + upgrader.FireRateUpgrades[upgrader.CurrentFireRateUpgrade].Cost))
         {

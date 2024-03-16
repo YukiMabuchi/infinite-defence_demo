@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
 
     public void CloseTowerUpgradePanel(bool openUpgradePanel = true)
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         _towerUpgradePanel.SetActive(false);
         if (TowerManager.instance.SelectedTower)
         {
@@ -45,6 +47,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenTowerSelectPanel()
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         _towerSelectPanel.SetActive(true);
     }
 

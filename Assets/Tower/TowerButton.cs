@@ -19,18 +19,24 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         TowerManager.instance.SetPlacingTower(towerToPlace);
         StartTowerPlacement();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         Vector3 location = GetIndicatorPosition();
         indicator.position = location;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (BattleManager.instance.IsGamePaused) return;
+
         TowerManager.instance.UnsetPlacingTower();
         // set prfab's build delay to default (without it, it will affect the build)
         towerToPlace.SkipBuildDelay(false);

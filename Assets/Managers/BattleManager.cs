@@ -12,6 +12,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<GameObject> speedAdjusterButtons;
     int currentGameSpeed = 1;
 
+    bool isGamePaused = false;
+    public bool IsGamePaused { get { return isGamePaused; } }
+
     bool isGameOver = false;
     public bool IsGameOver { get { return isGameOver; } }
 
@@ -35,11 +38,14 @@ public class BattleManager : MonoBehaviour
 
     public void PauseGame()
     {
+        // NOTE: PauseGame doesn't edit currentGameSpeed
+        isGamePaused = true;
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        isGamePaused = false;
         Time.timeScale = currentGameSpeed;
     }
 
@@ -60,7 +66,7 @@ public class BattleManager : MonoBehaviour
     {
         if (isGameOver) return;
 
-        Time.timeScale = 0;
+        PauseGame();
         menuPopup.SetActive(true);
     }
 
@@ -73,7 +79,7 @@ public class BattleManager : MonoBehaviour
     // TODO: find better way
     public void AdjustGameSpeed(int times)
     {
-        if (isGameOver) return;
+        if (isGameOver || isGamePaused) return;
 
         Time.timeScale = 1 * times;
 
