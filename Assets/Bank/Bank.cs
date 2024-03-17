@@ -23,6 +23,11 @@ public class Bank : MonoBehaviour
         UpdateDisplay();
     }
 
+    // private void Update()
+    // {
+    //     Debug_IncreaseDeposit();
+    // }
+
     public void Deposit(int amount)
     {
         currentBalance += Mathf.Abs(amount); // Mathf.Abs => negative will be removed. -10 = 10
@@ -42,5 +47,14 @@ public class Bank : MonoBehaviour
     void UpdateDisplay()
     {
         displayBalance.text = "Gold: " + currentBalance;
+    }
+
+    // For Debug
+    void Debug_IncreaseDeposit()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Deposit(10000);
+        }
     }
 }
