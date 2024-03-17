@@ -13,6 +13,8 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     GridManager gridManager;
 
+    bool isDragging;
+
     private void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
@@ -20,7 +22,12 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (BattleManager.instance.IsGamePaused) return;
+        if (BattleManager.instance.IsGamePaused)
+        {
+            isDragging = false;
+            return;
+        }
+        isDragging = true;
 
         TowerManager.instance.SetPlacingTower(towerToPlace);
         StartTowerPlacement();
@@ -28,7 +35,7 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (BattleManager.instance.IsGamePaused) return;
+        if (!isDragging) return;
 
         Vector3 location = GetIndicatorPosition();
         indicator.position = location;
@@ -36,7 +43,7 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (BattleManager.instance.IsGamePaused) return;
+        if (!isDragging) return;
 
         TowerManager.instance.UnsetPlacingTower();
         // set prfab's build delay to default (without it, it will affect the build)
