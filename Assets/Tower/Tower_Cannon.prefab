@@ -84,9 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1842646d1742f45de8703ccae2d8036f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerName: cannon
   cost: 75
   buildDelay: 1
   doesAim: 1
+  availableNumbers: 0
+  isInfinite: 1
   towerUIlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -139,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cb053808cd44b939d1144fbd48601f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowUpgrade: 1
   rangeUpgrades:
   - amount: 30
     cost: 50

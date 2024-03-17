@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    // NOTE: put tower in TowerManger's towers too
+
+    [SerializeField] string towerName;
+    public string TowerName { get { return towerName; } }
+
     [SerializeField] int cost = 75;
     public int Cost { get { return cost; } }
 
@@ -11,6 +16,11 @@ public class Tower : MonoBehaviour
     [SerializeField] bool doesAim = true;
     public bool DoesAim { get { return doesAim; } }
 
+    [SerializeField] int initialAvailableNumbers = 0;
+    public int InitialAvailableNumbers { get { return initialAvailableNumbers; } }
+
+    [SerializeField] bool isInfinite = false;
+    public bool IsInfinite { get { return isInfinite; } }
 
     [SerializeField] LayerMask towerUIlayer;
 

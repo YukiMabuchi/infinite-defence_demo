@@ -53,6 +53,7 @@ public class Tile : MonoBehaviour
 
             if (isSuccessful)
             {
+                TowerManager.instance.ManageTowerPlacementStatus(towerPrefab);
                 towerPrefab.SetTile(this);
                 gridManager.BlockNode(coordinates);
 

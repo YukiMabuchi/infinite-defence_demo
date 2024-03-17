@@ -51,9 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1842646d1742f45de8703ccae2d8036f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerName: slow
   cost: 800
   buildDelay: 2
   doesAim: 0
+  initialAvailableNumbers: 2
+  isInfinite: 0
   towerUIlayer:
     serializedVersion: 2
     m_Bits: 512

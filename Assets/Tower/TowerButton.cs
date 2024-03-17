@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] Transform indicator;
     [SerializeField] LayerMask tileLayer;
+    public TextMeshProUGUI displayTowerAvailableNumber; // not every tower has it, so make this public instead of SerializeField
 
     [Tooltip("Set tower prefab")]
     [SerializeField] Tower towerToPlace;
@@ -18,11 +20,12 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
+        UpdateDisplayTowerAvailableNumber();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (BattleManager.instance.IsGamePaused)
+        if (BattleManager.instance.IsGamePaused || (!towerToPlace.IsInfinite && TowerManager.instance.AllTowerPlacementStatus.ContainsKey(towerToPlace.TowerName) && TowerManager.instance.AllTowerPlacementStatus[towerToPlace.TowerName][2] == 0))
         {
             isDragging = false;
             return;
@@ -59,6 +62,7 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (targetTile)
         {
             targetTile.PlaceTower(towerToPlace);
+            UpdateDisplayTowerAvailableNumber();
         }
     }
 
@@ -101,5 +105,15 @@ public class TowerButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         location.y = 0f;
 
         return location;
+    }
+
+    public void UpdateDisplayTowerAvailableNumber()
+    {
+        if (displayTowerAvailableNumber == null) return;
+        if (TowerManager.instance.AllTowerPlacementStatus.ContainsKey(towerToPlace.TowerName))
+        {
+            int num = TowerManager.instance.AllTowerPlacementStatus[towerToPlace.TowerName][2];
+            displayTowerAvailableNumber.text = (num < 0 ? 0 : num).ToString();
+        }
     }
 }

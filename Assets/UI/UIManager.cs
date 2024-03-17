@@ -54,13 +54,23 @@ public class UIManager : MonoBehaviour
     public void OpenTowerSelectPanel()
     {
         if (BattleManager.instance.IsGamePaused) return;
-
+        UpdateAllTowerSelectButtons();
         _towerSelectPanel.SetActive(true);
     }
 
     public void CloseTowerSelectPanel()
     {
         _towerSelectPanel.SetActive(false);
+    }
+
+    public void UpdateAllTowerSelectButtons()
+    {
+        for (int i = 0; i < _towerSelectPanel.transform.childCount; i++)
+        {
+            Transform child = _towerSelectPanel.transform.GetChild(i);
+            TowerButton towerButton = child.GetComponent<TowerButton>();
+            if (towerButton != null) towerButton.UpdateDisplayTowerAvailableNumber();
+        }
     }
 
     public void HideUIs()

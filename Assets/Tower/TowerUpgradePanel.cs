@@ -22,6 +22,7 @@ public class TowerUpgradePanel : MonoBehaviour
         Tower tower = TowerManager.instance.SelectedTower;
         Vector2Int coordinates = gridManager.GetCoordinatesFromPosition(tower.transform.position);
         Bank.instance.Deposit((tower.Cost + tower.Upgrader.TotalCost) / 2); // give back the half of the total cost
+        TowerManager.instance.ManageTowerPlacementStatus(tower, false);
         Destroy(tower.gameObject); // tower.OnDestroy is dependent on this
         if (gridManager) gridManager.UnblockNode(coordinates);
         foreach (Pathfinder pathfinder in pathfinders)
